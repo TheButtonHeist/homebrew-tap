@@ -1,8 +1,8 @@
 # Homebrew formula for Button Heist CLI + MCP server.
 #
-# Formula shape lives in TheButtonHeist/TheButtonHeist. Release artifact names
-# and repository constants live in scripts/release-contract.sh. The release
-# workflow renders this file with real SHA-256 values.
+# Formula shape lives here. Release artifact names and repository constants
+# live in scripts/release-contract.sh. The release workflow renders this into
+# TheButtonHeist/homebrew-tap with real SHA-256 values.
 #
 # Users install with:
 #   brew install TheButtonHeist/tap/buttonheist
@@ -10,14 +10,14 @@
 class Buttonheist < Formula
   desc "Give AI agents full programmatic control of iOS apps"
   homepage "https://github.com/TheButtonHeist/TheButtonHeist"
-  version "0.6.38"
+  version "0.7.0"
 
-  url "https://github.com/TheButtonHeist/TheButtonHeist/releases/download/v0.6.38/buttonheist-0.6.38-macos.tar.gz"
-  sha256 "b47e77dddffab1e42645eeeb3b6a7c58735803cafe844d544f63834d04fcf6ff"
+  url "https://github.com/TheButtonHeist/TheButtonHeist/releases/download/v0.7.0/buttonheist-0.7.0-macos.tar.gz"
+  sha256 "b91f76aa33d6bfff2a55ac117d2c9e7c878f3690fe6868f9d061d75479169789"
 
   resource "mcp" do
-    url "https://github.com/TheButtonHeist/TheButtonHeist/releases/download/v0.6.38/buttonheist-mcp-0.6.38-macos.tar.gz"
-    sha256 "56ca5a2a096a3121e621826262d0cddbe13be41b341d8320046e9d092de9b95b"
+    url "https://github.com/TheButtonHeist/TheButtonHeist/releases/download/v0.7.0/buttonheist-mcp-0.7.0-macos.tar.gz"
+    sha256 "82ed501c37af1feb225062a3f271d7143b31eff0198be47e881d955184ac5e96"
   end
 
   depends_on :macos
@@ -28,7 +28,6 @@ class Buttonheist < Formula
 
   def install
     bin.install "buttonheist"
-    bin.install "heist-plan" if (buildpath/"heist-plan").exist?
     lib.install "ThePlans" if (buildpath/"ThePlans").exist?
     resource("mcp").stage { bin.install "buttonheist-mcp" }
   end
@@ -52,7 +51,6 @@ class Buttonheist < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/buttonheist --version")
-    assert_predicate bin/"heist-plan", :exist?
     assert_predicate bin/"buttonheist-mcp", :exist?
     assert_predicate bin/"buttonheist-mcp", :executable?
     assert_predicate lib/"ThePlans/arm64-apple-macosx/release/Modules/ThePlans.swiftinterface", :exist?
