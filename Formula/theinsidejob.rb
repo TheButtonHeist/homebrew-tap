@@ -2,11 +2,11 @@
 class Theinsidejob < Formula
   desc "Prebuilt Debug iOS runtime for Button Heist"
   homepage "https://github.com/TheButtonHeist/TheButtonHeist"
-  version "0.7.0"
+  version "0.7.1"
   license "Apache-2.0"
 
-  url "https://github.com/TheButtonHeist/TheButtonHeist/releases/download/v0.7.0/theinsidejob-0.7.0.zip"
-  sha256 "526e63cba46bf9fabc38ff1e4217cbd5f53f6e711d9ddde55fb66304fb9a26c4"
+  url "https://github.com/TheButtonHeist/TheButtonHeist/releases/download/v0.7.1/theinsidejob-0.7.1.zip"
+  sha256 "88cd7693380091d01f41f0b740835428bedc3f1cac39a54ccbff8f804a2a6be1"
 
   depends_on :macos
 
